@@ -1,0 +1,96 @@
+body,
+dl,
+dd,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form,
+header,
+section,
+article,
+footer {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%
+}
+
+em,
+b {
+  font-style: normal
+}
+
+a {
+  text-decoration: none
+}
+
+a:hover {
+  text-decoration: none
+}
+
+img {
+  border: 0
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  outline: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+td,
+th,
+ul,
+ol {
+  padding: 0
+}
+
+body {
+  overflow-x: hidden;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+}
+
+/* html {
+  font-size: 100px;
+} */
+:root {
+  --color-white: #ffffff
+}
+
+@font-face {
+  font-family: AMb-2;
+  src: url(./assets/fonts/AozoraMincho-bold-2.ttf);
+}
+
+@font-face {
+  font-family: SD1-Logo;
+  src: url(./assets/fonts/SEAN-D-1.subset.ttf);
+}
+
+@font-face {
+  font-family: Maoken;
+  src: url(./assets/fonts/MaoKenZhuYuanTi-MaokenZhuyuanTi-2.ttf);
+}

@@ -1,69 +1,12 @@
-body,
-dl,
-dd,
-ul,
-ol,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-form,
-header,
-section,
-article,
-footer {
-  margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: 100%
-}
-
-em,
-b {
-  font-style: normal
-}
-
-a {
-  text-decoration: none
-}
-
-a:hover {
-  text-decoration: none
-}
-
-img {
-  border: 0
-}
-
-button,
-input,
-select,
-textarea {
-  font-size: 100%;
-  outline: none
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0
-}
-
-td,
-th,
-ul,
-ol {
-  padding: 0
-}
-
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,p,form,header,section,article,footer {margin: 0;}
+h1,h2,h3,h4,h5,h6 {font-size: 100%}
+em,b {font-style: normal}
+a {text-decoration: none}
+a:hover {text-decoration: none}
+img {border: 0}
+button,input,select,textarea {font-size: 100%;outline: none}
+table {border-collapse: collapse;border-spacing: 0}
+td,th,ul,ol {padding: 0}
 body {
   overflow-x: hidden;
   user-select: none;
@@ -72,10 +15,6 @@ body {
   -ms-user-select: none;
   -khtml-user-select: none;
 }
-
-/* html {
-  font-size: 100px;
-} */
 :root {
   --color-white: #ffffff
 }

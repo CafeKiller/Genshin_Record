@@ -16,15 +16,8 @@ const headerNav = ref()
 onMounted(() => { 
   window.addEventListener("scroll", () => { 
     // console.log(document.documentElement.scrollTop);
-    
-    
   })
 })
-
-
-
-
-
 </script>
 
 <style scoped>
@@ -34,7 +27,6 @@ onMounted(() => {
   text-align: center;
   background: url(../assets/images/genshin.jpg) no-repeat center top; 
   background-size: 1960px 868px;
-
 }
 .header-nav{
   position: fixed;

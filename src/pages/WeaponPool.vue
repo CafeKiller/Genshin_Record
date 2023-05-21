@@ -3,7 +3,7 @@
         <div class="pool-box" v-for="item in weaponArr" :key="item._id">
             <div class="pool-item">
                 <div class="left">
-                    <img :src="item.cover" :alt="item.poolName">
+                    <img :src="'http://localhost:3333/static'+item.cover">
                     <span class="ver-text">Version {{item.version}}</span>
                 </div>
                 <div class="right">
@@ -12,16 +12,15 @@
                     </div>
                     <div class="row-1">
                         <div class="go-weap-item" v-for="(goWeap, gw_idx) in item.goWeapon" :key="gw_idx">
-                            <img :src="goWeap.img" :alt="goWeap.name">
+                            <img :src="'http://localhost:3333/static'+goWeap.img" :alt="goWeap.name">
                             <span>
-                                <p>{{goWeap.type}}</p>
                                 <p>{{goWeap.name}}</p>
                             </span>
                         </div>
                     </div>
                     <div class="row-2">
                         <div class="pu-weap-item" v-for="(puWeap, pw_idx) in item.puWeapon" :key="pw_idx">
-                            <img :src="puWeap.img" :alt="puWeap.name">
+                            <img :src="'http://localhost:3333/static'+puWeap.img" :alt="puWeap.name">
                             <span>{{puWeap.name}}</span>
                         </div>
                     </div>
@@ -32,28 +31,38 @@
 </template>
 
 <script setup lang="ts">
+import { get } from '../api/api';
+import { Ref ,ref} from 'vue';
 
-const weaponArr: Array<any> = [
-    {
-        "_id":"100001",
-        "version": "1.0",
-        "goWeapon": [
-            {name:"风鹰剑",img: "/src/assets/images/goWeap/fyj.png"},
-            {name:"阿莫斯之弓",img:"/src/assets/images/goWeap/amszg.png"}
-        ],
-        "puWeapon": [
-            {name:"笛剑",img:"/src/assets/images/puWeap/dijian.png"},
-            {name:"钟剑",img:"/src/assets/images/puWeap/zhongjian.png"},
-            {name:"绝弦",img:"/src/assets/images/puWeap/juexian.png"},
-            {name:"西风长枪",img:"/src/assets/images/puWeap/xifengchangqiang.png"},
-            {name:"流浪乐章",img:"/src/assets/images/puWeap/liulangyuezhang.png"}
-        ],
-        "cover": "/src/assets/images/w1.webp",
-        "startTime": "2020-09-28 11:00:00",
-        "endTime": "2020-10-18 17:59:59",
-        "number": "1601262000000"
-    }
-]
+type goWeapon = {
+    img:string,
+    name:string
+}
+type puWeapon = {
+    img:string,
+    name:string
+}
+
+type weapPool  = {
+    _id:any,
+    goWeapon: goWeapon[],
+    puWeapon: puWeapon[],
+    version: string,
+    cover: string,
+    startTime: string,
+    endTime: string,
+    number: number
+}
+
+let weaponArr: Ref<weapPool[]> = ref([]);
+
+
+
+get('/weapon/pool/api/get').then((result:any)=>{
+    weaponArr.value = result.data
+}).catch((err)=>{
+    console.error(err)
+})
 
 </script>
 

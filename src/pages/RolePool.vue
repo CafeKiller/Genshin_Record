@@ -68,7 +68,7 @@ type rolePool = {
 let rolePoolArr:Ref<rolePool[]> = ref([])
 
 //获取后台全部角色卡池数据
-get("/role/pool/get").then((result: any) => { 
+get("/api/role/pool/get").then((result: any) => { 
     // console.log("result",result);
     rolePoolArr.value = result.data;
 }).catch((err) => {

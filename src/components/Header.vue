@@ -37,8 +37,8 @@ onMounted(() => {
   align-items: center;
   width: 100%;
   height: 100px;
-  background-color: rgba(0,0,0,.8);
-  box-shadow: 3px 3px 3px 0 rgba(0,0,0,.3);
+  /* background-color: rgba(0,0,0,.8);
+  box-shadow: 3px 3px 3px 0 rgba(0,0,0,.3); */
   
   z-index: 9990;
 }

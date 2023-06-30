@@ -1,19 +1,13 @@
 <template>
     <div class="router-nav color-white">
         <router-link to="/" class="nav-item">
-            <span>home</span>
+            <span>Home</span>
         </router-link>
         <router-link to="/pool/role" class="nav-item">
             <span>RolePool</span>
         </router-link>
         <router-link to="/pool/weapon" class="nav-item">
             <span>WeaponPool</span>
-        </router-link>
-        <router-link to="/cards/role" class="nav-item">
-            <span>RoleCrads</span>
-        </router-link>
-        <router-link to="/cards/weapon" class="nav-item">
-            <span>WeaponCards</span>
         </router-link>
         <router-link to="/ver" class="nav-item">
             <span>Version</span>
@@ -41,12 +35,13 @@
     width: 120px;
     height:50px;
     border-radius: 5px;
-    background-color: #f1eae2;
+    background: linear-gradient(90deg, #f1eae2 ,#f1eae2, #f1eae2,#f1eae2);
     background-size: 400%;
     z-index: 999;
     box-shadow:
         3px 3px 6px rgba(0, 0, 0, .1),
         -3px -3px 6px rgba(0, 0, 0, .4);
+    transition: background 1s ease;
 }
 .nav-item>span{
     font-size: 12px;

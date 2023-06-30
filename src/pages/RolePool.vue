@@ -1,7 +1,7 @@
 <template>
     <div class="cont">
         <div class="pool-box" v-for="item in rolePoolArr" :key="item._id">
-            <div class="pool-item">
+            <div :ref="poolItem" class="pool-item">
                 <div class="left">
                     <img :src="'http://localhost:3333/static'+item.cover" :alt="item.poolName">
                     <span class="ver-text">Version {{item.version}}</span>
@@ -44,8 +44,15 @@
 </template>
 
 <script setup lang="ts">
+import { gsap } from "gsap";
 import { get } from '../api/api';
 import { ref, reactive, onBeforeMount ,Ref} from 'vue';
+
+
+let eList:any[] = [];
+const poolItem = (e:any) =>{
+    eList.push(e)
+}
 
 // 角色类型
 type role = {
@@ -75,7 +82,20 @@ get("/api/role/pool/get").then((result: any) => {
     console.log(err);
 })
 
+function loading() {
 
+    console.log(poolItem);
+    console.log(eList);
+    
+    
+
+    const loader = gsap.timeline();
+    const duration = 0.25;
+    const delay = 1;
+
+    loader.to(poolItem,duration,{x: 200})
+}
+loading()
 </script>
 
 <style scoped>

@@ -6,32 +6,29 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
   <title>Genshin Record</title>
-  <script>
-    //屏幕适应 
-    /* 
-    (function (win, doc) {
-      if (!win.addEventListener) return;
-      var html = document.documentElement;
-      function setFont() {
-        var html = document.documentElement;
-        var k = 1960;
-        html.style.fontSize = html.clientWidth / k * 100 + "px";
-      }
-      setFont();
-      setTimeout(function () {
-        setFont();
-      }, 300);
-      doc.addEventListener('DOMContentLoaded', setFont, false);
-      win.addEventListener('resize', setFont, false);
-      win.addEventListener('load', setFont, false);
-    })(window, document);
-    */
-  </script>
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app" class="wrap"></div>
   <script type="module" src="/src/main.ts"></script>
 </body>
+
+<!-- 屏幕适配 -->
+<script>
+  const minWW = 1200
+  if (!/(iPhone|iPad|iPod|iOS|Android|Windows Phone|BlackBerry|SymbianOS)/i.test(navigator.userAgent)) {
+    // 只需要在PC端工作
+    (function(){
+      let ww = window.innerWidth<= minWW ? minWW : window.innerWidth
+      let zoom = ww/1920
+      document.querySelector(".wrap").style.zoom = zoom
+    })()
+    window.onresize=function(){
+      let ww = window.innerWidth <= minWW ? minWW : window.innerWidth
+      let zoom = ww/1920
+      document.querySelector(".wrap").style.zoom = zoom
+    }
+  }
+</script>
 
 </html>

@@ -3,14 +3,23 @@
 </template>
 
 <script setup lang="ts">
-
 import { get, post } from '../api/api';
+import axios from "axios";
 
-get("/role/get").then((data) => { 
-    console.log(data);
-}).catch((err) => {
-    console.log(err);
-})
+axios.get('/test/mock/per')
+    .then((res)=>{
+        console.log(res.data)
+    })
+    .catch((err)=>{
+        console.error(err)
+    })
+
+
+// get("/role/get").then((data) => {
+//     console.log(data);
+// }).catch((err) => {
+//     console.log(err);
+// })
 
 </script>
 

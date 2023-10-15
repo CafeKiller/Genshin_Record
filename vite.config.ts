@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
       vue(),
       viteMockServe({
-        mockPath:"./mock",  // mock文件所在位置
+        mockPath:"/mock",  // mock文件所在位置
         localEnabled:true,  // 是否应用于本地测试环境
         prodEnabled: false, // 是否用于生产环境
         supportTs: true,    // true 可以读取ts文件模块

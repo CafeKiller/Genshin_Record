@@ -14,7 +14,13 @@
       "DOM"
     ],
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    // 配置@别名后,vite可能出现错误提示
+    // 需要在此处配置基本url信息和paths路径
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [ "src/*" ],
+    }
   },
   "include": [
     "src/**/*.ts",

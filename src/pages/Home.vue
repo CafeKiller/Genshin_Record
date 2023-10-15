@@ -6,7 +6,7 @@
 import { get, post } from '../api/api';
 import axios from "axios";
 
-axios.get('/test/mock/per')
+axios.get('/upms/user/info')
     .then((res)=>{
         console.log(res.data)
     })

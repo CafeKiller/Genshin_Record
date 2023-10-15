@@ -1,0 +1,20 @@
+{
+  "users":
+  [
+    {
+      "userid": 1,
+      "username": "咖啡",
+      "user_state": "在线"
+    },
+    {
+      "userid": 2,
+      "username": "coffee",
+      "user_state": "离线"
+    },
+    {
+      "userid": 3,
+      "username": "cafe",
+      "user_state": "离线"
+    }
+  ]
+}

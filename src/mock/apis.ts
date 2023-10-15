@@ -1,4 +1,7 @@
 import Mock from "mockjs";
+
+import data from "./datas/user.json"
+
 export default [
     // GetUserInfo
     {
@@ -8,9 +11,7 @@ export default [
             return {
                 code: 200,
                 message: "成功",
-                data: {
-                    name: "testName",
-                },
+                data: data
             };
         },
     },

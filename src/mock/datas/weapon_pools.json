@@ -1,0 +1,202 @@
+[
+  {
+    "_id": 1,
+    "goWeapon": [
+      {
+        "name": "风鹰剑",
+        "img": "/cover_header/go_weap/Fengyingjian.png"
+      },
+      {
+        "name": "阿莫斯之弓",
+        "img": "/cover_header/go_weap/Amosizhigong.png"
+      }
+    ],
+    "puWeapon": [
+      {
+        "name": "笛剑",
+        "img": "/cover_header/pu_weap/Dijian.png"
+      },
+      {
+        "name": "钟剑",
+        "img": "/cover_header/pu_weap/Zhongjian.png"
+      },
+      {
+        "name": "绝弦",
+        "img": "/cover_header/pu_weap/Juexian.png"
+      },
+      {
+        "name": "西风长枪",
+        "img": "/cover_header/pu_weap/Xifengchangqiang.png"
+      },
+      {
+        "name": "流浪乐章",
+        "img": "/cover_header/pu_weap/Liulangyuezhang.png"
+      }
+    ],
+    "version": "1.0",
+    "startTime": "2021-4-7 18:00",
+    "endTime": "2021-4-27 14:59",
+    "cover": "/cover_pool/weap/ver-101.png",
+    "number": "101"
+  },
+  {
+    "_id": 2,
+    "goWeapon": [
+      {
+        "name": "四风原典",
+        "img": "/cover_header/go_weap/Sifengyuandian.png"
+      },
+      {
+        "name": "狼的末路",
+        "img": "/cover_header/go_weap/langdemolu.png"
+      }
+    ],
+    "puWeapon": [
+      {
+        "name": "祭礼剑",
+        "img": "/cover_header/pu_weap/Jilijian.png"
+      },
+      {
+        "name": "祭礼大剑",
+        "img": "/cover_header/pu_weap/Jilidajian.png"
+      },
+      {
+        "name": "祭礼弓",
+        "img": "/cover_header/pu_weap/Jiligong.png"
+      },
+      {
+        "name": "匣里灭辰",
+        "img": "/cover_header/pu_weap/Xialimiechen.png"
+      },
+      {
+        "name": "祭礼残章",
+        "img": "/cover_header/pu_weap/Jilicanzhang.png"
+      }
+    ],
+    "version": "1.0",
+    "startTime": "2021-4-7 18:00",
+    "endTime": "2021-4-27 14:59",
+    "cover": "/cover_pool/weap/ver-102.png",
+    "number": "102"
+  },
+  {
+    "_id": 3,
+    "goWeapon": [
+      {
+        "name": "天空之翼",
+        "img": "/cover_header/go_weap/Tiankongzhiyi.png"
+      },
+      {
+        "name": "尘世之锁",
+        "img": "/cover_header/go_weap/Chenshizhisuo.png"
+      }
+    ],
+    "puWeapon": [
+      {
+        "name": "笛剑",
+        "img": "/cover_header/pu_weap/Dijian.png"
+      },
+      {
+        "name": "雨裁",
+        "img": "/cover_header/pu_weap/Yucai.png"
+      },
+      {
+        "name": "弓藏",
+        "img": "/cover_header/pu_weap/Gongcang.png"
+      },
+      {
+        "name": "西风长枪",
+        "img": "/cover_header/pu_weap/Xifengchangqiang.png"
+      },
+      {
+        "name": "昭心",
+        "img": "/cover_header/pu_weap/Zhaoxin.png"
+      }
+    ],
+    "version": "1.1",
+    "startTime": "2021-4-7 18:00",
+    "endTime": "2021-4-27 14:59",
+    "cover": "/cover_pool/weap/ver-111.png",
+    "number": "111"
+  },
+  {
+    "_id": 4,
+    "goWeapon": [
+      {
+        "name": "贯虹之槊",
+        "img": "/cover_header/go_weap/Guanhongzhishuo.png"
+      },
+      {
+        "name": "无工大剑",
+        "img": "/cover_header/go_weap/Wugongdajian.png"
+      }
+    ],
+    "puWeapon": [
+      {
+        "name": "匣里龙吟",
+        "img": "/cover_header/pu_weap/Xialilongying.png"
+      },
+      {
+        "name": "钟剑",
+        "img": "/cover_header/pu_weap/Zhongjian.png"
+      },
+      {
+        "name": "西风猎弓",
+        "img": "/cover_header/pu_weap/Xifengliegong.png"
+      },
+      {
+        "name": "匣里灭辰",
+        "img": "/cover_header/pu_weap/Xialimiechen.png"
+      },
+      {
+        "name": "西风秘典",
+        "img": "/cover_header/pu_weap/Xifengmidian.png"
+      }
+    ],
+    "version": "1.1",
+    "startTime": "2021-4-7 18:00",
+    "endTime": "2021-4-27 14:59",
+    "cover": "/cover_pool/weap/ver-112.png",
+    "number": "112"
+  },
+  {
+    "_id": 5,
+    "goWeapon": [
+      {
+        "name": "斫峰之刃",
+        "img": "/cover_header/go_weap/Zhuofengzhiren.png"
+      },
+      {
+        "name": "天空之卷",
+        "img": "/cover_header/go_weap/Tiankongzhijuan.png"
+      }
+    ],
+    "puWeapon": [
+      {
+        "name": "西风剑",
+        "img": "/cover_header/pu_weap/Xifengjian.png"
+      },
+      {
+        "name": "西风大剑",
+        "img": "/cover_header/pu_weap/Xifengdajian.png"
+      },
+      {
+        "name": "绝弦",
+        "img": "/cover_header/pu_weap/Juexian.png"
+      },
+      {
+        "name": "西风长枪",
+        "img": "/cover_header/pu_weap/Xifengchangqiang.png"
+      },
+      {
+        "name": "祭礼残章",
+        "img": "/cover_header/pu_weap/Jilicanzhang.png"
+      }
+    ],
+    "version": "1.2",
+    "startTime": "2021-4-7 18:00",
+    "endTime": "2021-4-27 14:59",
+    "cover": "/cover_pool/weap/ver-121.png",
+    "number": "121"
+  }
+]

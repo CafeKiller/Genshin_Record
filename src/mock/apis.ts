@@ -2,21 +2,44 @@ import Mock from "mockjs";
 
 import data from "./datas/user.json"
 
+import rolePoolData from "./datas/role_pools.json"
+import weaponPoolData from "./datas/weapon_pools.json"
+
+type mockResult = {
+    code: number
+    message: string
+    data: {}
+}
+
+enum requestMethod  {
+    GET = 'get',
+    POST= 'post'
+}
+
 export default [
-    // GetUserInfo
     {
-        url: "/upms/user/info",
-        type: "get",
-        response: () => {
+        url: "/pools/role/all",
+        type: requestMethod.GET,
+        response: (): mockResult => {
             return {
                 code: 200,
                 message: "成功",
-                data: data
+                data: rolePoolData
             };
         },
     },
-    // GetToken
     {
+        url: "/pools/weapon/all",
+        type: requestMethod.GET,
+        response: (): mockResult =>{
+            return {
+                code:200,
+                message: "success",
+                data: weaponPoolData
+            }
+        }
+    }
+    /*{
         url: "/auth/oauth/token",
         type: "post",
         response: (option: any) => {
@@ -36,5 +59,5 @@ export default [
                 });
             }
         },
-    },
+    },*/
 ];

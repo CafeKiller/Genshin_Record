@@ -6,13 +6,13 @@
 import { get, post } from '../api/api';
 import axios from "axios";
 
-axios.get('/upms/user/info')
+/*axios.get('/upms/user/info')
     .then((res)=>{
         console.log(res.data)
     })
     .catch((err)=>{
         console.error(err)
-    })
+    })*/
 
 
 // get("/role/get").then((data) => {

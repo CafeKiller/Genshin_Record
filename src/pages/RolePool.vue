@@ -3,7 +3,7 @@
         <div class="pool-box" v-for="item in rolePoolArr" :key="item._id">
             <div :ref="poolItem" class="pool-item">
                 <div class="left">
-                    <img :src="'http://localhost:3333/static'+item.cover" :alt="item.poolName">
+                    <img :src="'http://localhost:5173/static'+item.cover" :alt="item.poolName">
                     <span class="ver-text">Version {{item.version}}</span>
                 </div>
                 <div class="right">
@@ -27,12 +27,12 @@
                     </div>
                     <div class="row-3">
                         <div class="role-item">
-                            <img :src="'http://localhost:3333/static'+item.goRole.profile">
+                            <img :src="'http://localhost:5173/static'+item.goRole.profile">
                             <span class="role-name">{{item.goRole.name}}</span>
                         </div>
                         <div class="pu-role-box" v-for="(inn, index) in item.puRole" :key="index">
                             <div class="role-item">
-                                <img :src="'http://localhost:3333/static'+inn.profile">
+                                <img :src="'http://localhost:5173/static'+inn.profile">
                                 <span class="role-name">{{inn.name}}</span>
                             </div>
                         </div>
@@ -47,6 +47,7 @@
 import { gsap } from "gsap";
 import { get } from '../api/api';
 import { ref, reactive, onBeforeMount ,Ref} from 'vue';
+import axios from "axios";
 
 
 let eList:any[] = [];
@@ -75,20 +76,22 @@ type rolePool = {
 let rolePoolArr:Ref<rolePool[]> = ref([])
 
 //获取后台全部角色卡池数据
-get("/api/role/pool/get").then((result: any) => { 
-    // console.log("result",result);
-    rolePoolArr.value = result.data;
-}).catch((err) => {
-    console.log(err);
+// get("/api/role/pool/get").then((result: any) => {
+//     // console.log("result",result);
+//     rolePoolArr.value = result.data;
+// }).catch((err) => {
+//     console.log(err);
+// })
+
+axios.get("/pools/role/all").then((result)=>{
+    console.log(result)
+    rolePoolArr.value = result.data.data
 })
 
 function loading() {
 
     console.log(poolItem);
     console.log(eList);
-    
-    
-
     const loader = gsap.timeline();
     const duration = 0.25;
     const delay = 1;

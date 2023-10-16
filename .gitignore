@@ -1,3 +1,5 @@
+# 排除文件
 .vscode
 .idea
 node_modules/
+static/

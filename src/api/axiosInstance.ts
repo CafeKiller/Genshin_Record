@@ -5,7 +5,6 @@ const axiosInstance: AxiosInstance = axios.create({
     baseURL: "http://localhost:3333/",
     timeout: 5000
 })
-
 // 配置请求拦截器
 axiosInstance.interceptors.request.use(
     (config) => {

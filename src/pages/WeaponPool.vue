@@ -34,20 +34,20 @@
 import { get } from '../api/api';
 import { Ref ,ref} from 'vue';
 import axios from "axios";
+import { ObjectId } from "mongodb";
 
 type goWeapon = {
     img:string,
-    name:string
 }
 type puWeapon = {
     img:string,
     name:string
 }
 
-type weapPool  = {
-    _id:any,
-    goWeapon: goWeapon[],
-    puWeapon: puWeapon[],
+type weaponPool  = {
+    _id: ObjectId,
+    goWeapon: {img:string, name:string}[],
+    puWeapon: {img:string, name:string}[],
     version: string,
     cover: string,
     startTime: string,
@@ -55,7 +55,7 @@ type weapPool  = {
     number: number
 }
 
-let weaponArr: Ref<weapPool[]> = ref([]);
+let weaponArr: Ref<weaponPool[]> = ref([]);
 
 
 axios.get("/pools/weapon/all")

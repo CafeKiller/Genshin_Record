@@ -46,26 +46,16 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
 import { get } from '../api/api';
-import { ref, reactive, onBeforeMount ,Ref} from 'vue';
+import {ref, reactive, onBeforeMount, Ref, onMounted} from 'vue';
 import axios from "axios";
+import {ObjectId} from "mongodb";
 
-
-let eList:any[] = [];
-const poolItem = (e:any) =>{
-    eList.push(e)
-}
-
-// 角色类型
-type role = {
-    name: string,
-    profile: string
-}
 // 角色卡池类型
 type rolePool = {
-    _id:any,
+    _id:ObjectId,
     poolName: string,
-    goRole: any,
-    puRole: Array<role>,
+    goRole: {name:string,profile:string},
+    puRole: {name:string,profile:string}[],
     cover: string,
     startTime: string,
     endTime:string,
@@ -73,6 +63,10 @@ type rolePool = {
     isRemake:number
 }
 
+let elemList:HTMLElement[] = [];
+const poolItem = (e : HTMLElement) =>{
+    elemList.push(e)
+}
 let rolePoolArr:Ref<rolePool[]> = ref([])
 
 //获取后台全部角色卡池数据
@@ -83,22 +77,30 @@ let rolePoolArr:Ref<rolePool[]> = ref([])
 //     console.log(err);
 // })
 
-axios.get("/pools/role/all").then((result)=>{
-    console.log(result)
-    rolePoolArr.value = result.data.data
+// 请求数据
+
+
+onMounted(()=>{
+    init()
 })
 
-function loading() {
+// 组件初始化函数
+async function init(){
+    // 请求数据
+    await axios.get("/pools/role/all").then((result)=>{
+        rolePoolArr.value = result.data.data
+    })
+    // 执行加载动画
+    loading(elemList)
+}
 
-    console.log(poolItem);
-    console.log(eList);
+// 页面动画加载
+function loading(elements:HTMLElement[]) {
     const loader = gsap.timeline();
     const duration = 0.25;
-    const delay = 1;
-
-    loader.to(poolItem,duration,{x: 200})
+    const delay = .35;
+    loader.staggerTo(elements,duration,{x:100,opacity:1},delay)
 }
-loading()
 </script>
 
 <style scoped>
@@ -112,6 +114,8 @@ loading()
         flex-wrap: wrap;
     }
     .pool-item{
+        position: relative;
+        left: -100px;
         padding-left: 30px;
         margin-bottom: 30px;
         display: flex;
@@ -125,6 +129,7 @@ loading()
         box-shadow:
         3px 3px 7px rgba(0, 0, 0, .1),
         -3px -3px 7px rgba(0, 0, 0, .4);
+        opacity: 0;
     }
     .left{
         position: relative;

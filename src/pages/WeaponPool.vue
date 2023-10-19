@@ -3,7 +3,7 @@
         <div class="pool-box" v-for="item in weaponArr" :key="item._id">
             <div class="pool-item">
                 <div class="left">
-                    <img :src="'http://localhost:3333/static'+item.cover">
+                    <img :src="'http://localhost:5173/static'+item.cover">
                     <span class="ver-text">Version {{item.version}}</span>
                 </div>
                 <div class="right">
@@ -12,7 +12,7 @@
                     </div>
                     <div class="row-1">
                         <div class="go-weap-item" v-for="(goWeap, gw_idx) in item.goWeapon" :key="gw_idx">
-                            <img :src="'http://localhost:3333/static'+goWeap.img" :alt="goWeap.name">
+                            <img :src="'http://localhost:5173/static'+goWeap.img" :alt="goWeap.name">
                             <span>
                                 <p>{{goWeap.name}}</p>
                             </span>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="row-2">
                         <div class="pu-weap-item" v-for="(puWeap, pw_idx) in item.puWeapon" :key="pw_idx">
-                            <img :src="'http://localhost:3333/static'+puWeap.img" :alt="puWeap.name">
+                            <img :src="'http://localhost:5173/static'+puWeap.img" :alt="puWeap.name">
                             <span>{{puWeap.name}}</span>
                         </div>
                     </div>
@@ -33,6 +33,7 @@
 <script setup lang="ts">
 import { get } from '../api/api';
 import { Ref ,ref} from 'vue';
+import axios from "axios";
 
 type goWeapon = {
     img:string,
@@ -57,12 +58,16 @@ type weapPool  = {
 let weaponArr: Ref<weapPool[]> = ref([]);
 
 
+axios.get("/pools/weapon/all")
+    .then((res)=>{
+        weaponArr.value = res.data.data
+    })
 
-get('/weapon/pool/api/get').then((result:any)=>{
+/*get('/weapon/pool/api/get').then((result:any)=>{
     weaponArr.value = result.data
 }).catch((err)=>{
     console.error(err)
-})
+})*/
 
 </script>
 

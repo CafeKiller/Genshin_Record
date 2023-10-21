@@ -11,11 +11,12 @@
 
 import {ref, onMounted, Ref} from "vue";
 import * as events from "events";
+import {throttle} from "@/utils/util";
 
 const headerNav = ref()
 
 onMounted(() => { 
-  window.addEventListener("scroll", () => {
+  window.addEventListener("scroll", throttle(()=>{
       let top = document.documentElement.scrollTop
       let el:HTMLElement = headerNav.value
       const logoEl = el?.querySelector(".logo")
@@ -24,7 +25,7 @@ onMounted(() => {
       }else{
           logoEl ? logoEl.className = "logo" : undefined
       }
-  })
+  },200))
 })
 </script>
 

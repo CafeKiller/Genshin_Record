@@ -1,7 +1,7 @@
 <template>
     <div class="cont">
         <div class="pool-box" v-for="item in weaponArr" :key="item._id">
-            <div class="pool-item">
+            <div :ref="poolItem" class="pool-item">
                 <div class="left">
                     <img :src="'http://localhost:5173/static'+item.cover">
                     <span class="ver-text">Version {{item.version}}</span>
@@ -32,17 +32,10 @@
 
 <script setup lang="ts">
 import { get } from '../api/api';
-import { Ref ,ref} from 'vue';
+import {onMounted, Ref, ref} from 'vue';
 import axios from "axios";
 import { ObjectId } from "mongodb";
-
-type goWeapon = {
-    img:string,
-}
-type puWeapon = {
-    img:string,
-    name:string
-}
+import cardLoading from "@/utils/gsapAnima";
 
 type weaponPool  = {
     _id: ObjectId,
@@ -56,18 +49,30 @@ type weaponPool  = {
 }
 
 let weaponArr: Ref<weaponPool[]> = ref([]);
+let elemList:HTMLElement[] = [];
+const poolItem = (el : HTMLElement) =>{
+    elemList.push(el)
+}
 
 
-axios.get("/pools/weapon/all")
-    .then((res)=>{
-        weaponArr.value = res.data.data
-    })
 
 /*get('/weapon/pool/api/get').then((result:any)=>{
     weaponArr.value = result.data
 }).catch((err)=>{
     console.error(err)
 })*/
+
+onMounted(()=>{
+    init()
+})
+
+async function init(){
+    await axios.get("/pools/weapon/all")
+        .then((res) => {
+            weaponArr.value = res.data.data
+        })
+    cardLoading(elemList)
+}
 
 </script>
 
@@ -81,6 +86,8 @@ axios.get("/pools/weapon/all")
         flex-wrap: wrap;
     }
     .pool-item{
+        position: relative;
+        left: -100px;
         padding-left: 25px;
         margin-bottom: 30px;
         display: flex;
@@ -94,6 +101,7 @@ axios.get("/pools/weapon/all")
         box-shadow:
         3px 3px 7px rgba(0, 0, 0, .1),
         -3px -3px 7px rgba(0, 0, 0, .4);
+        opacity: 0;
     }
     .left{
         position: relative;

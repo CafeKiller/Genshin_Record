@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div id="app" class="wrap"></div>
+  <div id="app" class="wrap-cont"></div>
   <script type="module" src="/src/main.ts"></script>
 </body>
 
@@ -21,12 +21,12 @@
     (function(){
       let ww = window.innerWidth<= minWW ? minWW : window.innerWidth
       let zoom = ww/1920
-      document.querySelector(".wrap").style.zoom = zoom
+      document.querySelector(".wrap-cont").style.zoom = zoom
     })()
     window.onresize=function(){
       let ww = window.innerWidth <= minWW ? minWW : window.innerWidth
       let zoom = ww/1920
-      document.querySelector(".wrap").style.zoom = zoom
+      document.querySelector(".wrap-cont").style.zoom = zoom
     }
   }
 </script>

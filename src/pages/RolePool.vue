@@ -88,13 +88,8 @@ onMounted(()=>{
  * @description 组件页面初始化函数
  * */
 async function init(){
-    // 请求数据
-    await axios.get("/pools/role/all").then((result)=>{
+    await axios.post("/pools/role/page",{page:1,pageSize:2}).then((result)=>{
         rolePoolArr.value = result.data.data
-    })
-    await axios.post("/pools/role/page",{page:1,pageSize:3}).then((result)=>{
-        // rolePoolArr.value = result.data.data
-        console.log(result.data.data)
     })
     // 执行加载动画
     cardLoading(elemList)

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap" id="context">
+  <div class="wrap">
 
     <Header></Header>
     <Nav></Nav>
@@ -12,19 +12,18 @@
   import Nav from "./components/Nav.vue";
 </script>
 
-<style>
+<style lang="scss">
 .wrap{
     margin: 0 auto;
     width: 100%;
     max-width: 1960px;
     min-width: 1200px;
     overflow: hidden;
-    background-color: #f0f1f5;
-
-}
-.wrap *{
-  color: #333;
-  box-sizing: border-box;
+    background-color: #f1eae2;
+    *{
+        color: #333;
+        box-sizing: border-box;
+    }
 }
 .dialog{
   position: fixed;

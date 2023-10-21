@@ -92,6 +92,10 @@ async function init(){
     await axios.get("/pools/role/all").then((result)=>{
         rolePoolArr.value = result.data.data
     })
+    await axios.post("/pools/role/page",{page:1,pageSize:3}).then((result)=>{
+        // rolePoolArr.value = result.data.data
+        console.log(result.data.data)
+    })
     // 执行加载动画
     cardLoading(elemList)
 }

@@ -10,6 +10,7 @@ Mock.setup({
 export function mockAPI(){
     let i: MockParams
     for (i of mocks){
+        console.log(i)
         Mock.mock(new RegExp(i.url), i.type || 'get', i.response)
     }
 }

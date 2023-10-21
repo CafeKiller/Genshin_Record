@@ -6,8 +6,6 @@ import rolePoolData from "./datas/role_pools.json"
 import weaponPoolData from "./datas/weapon_pools.json"
 import {rolePoolType} from "@/mock/tpying";
 
-console.log(rolePoolData)
-
 type mockResult = {
     code: number
     message: string

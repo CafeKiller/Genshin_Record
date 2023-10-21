@@ -80,3 +80,19 @@ export function debounce(func: Func, delay: number, immediate?: boolean, resultC
     return _debounce;
 }
 
+/**
+ * @description 判断当前页面是否到达页面最底部
+ * @return true 表示到达最底部, false 表示未到达
+ * */
+export const hasPageBottom = ():boolean => {
+    // 距离顶部距离
+    let scrollTop:number = document.documentElement.scrollTop || document.body.scrollTop
+    // 当前窗口高度
+    let pageHeight:number = document.documentElement.clientHeight
+    // 页面总高度
+    let scrollHeight:number = document.documentElement.scrollHeight
+    if (scrollTop + pageHeight >= scrollHeight){
+        return true
+    }
+    return false
+}

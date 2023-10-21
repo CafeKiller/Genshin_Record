@@ -1,7 +1,7 @@
 <template>
     <div class="cont">
-        <div class="pool-box" v-for="item in rolePoolArr" :key="item._id">
-            <div :ref="poolItem" class="pool-item">
+        <div  class="pool-box" v-for="item in rolePoolArr" :key="item.poolName + item._id">
+            <div  :ref="poolItem" class="pool-item" :data-key="item.poolName + item._id">
                 <div class="left">
                     <img :src="'http://localhost:5173/static'+item.cover" :alt="item.poolName">
                     <span class="ver-text">Version {{item.version}}</span>
@@ -49,6 +49,8 @@ import {ref, reactive, onBeforeMount, Ref, onMounted} from 'vue';
 import axios from "axios";
 import {ObjectId} from "mongodb";
 import cardLoading from "@/utils/gsapAnima";
+import {hasPageBottom, throttle} from "@/utils/util";
+import {gsap} from "gsap";
 
 // 角色卡池类型
 type rolePool = {
@@ -64,10 +66,14 @@ type rolePool = {
 }
 
 let elemList:HTMLElement[] = [];
-const poolItem = (el : HTMLElement) =>{
+let poolItem = (el : HTMLElement) =>{
     elemList.push(el)
 }
 let rolePoolArr:Ref<rolePool[]> = ref([])
+let currentPage = 1
+let pageSize = 2
+let befResLen = 0
+let aftResLen = 0
 
 //获取后台全部角色卡池数据
 // get("/api/role/pool/get").then((result: any) => {
@@ -77,23 +83,59 @@ let rolePoolArr:Ref<rolePool[]> = ref([])
 //     console.log(err);
 // })
 
-// 请求数据
-
-
 onMounted(()=>{
     init()
+    window.addEventListener("scroll",()=>{
+        hitBottomLoad()
+    })
 })
 
 /**
  * @description 组件页面初始化函数
  * */
 async function init(){
-    await axios.post("/pools/role/page",{page:1,pageSize:2}).then((result)=>{
+    // 请求数据
+    await axios.post("/pools/role/page",{page:currentPage,pageSize}).then((result)=>{
         rolePoolArr.value = result.data.data
+        befResLen = rolePoolArr.value.length
     })
     // 执行加载动画
     cardLoading(elemList)
 }
+
+let flag = true
+const hitBottomLoad:Function = throttle( async () => {
+
+    if(hasPageBottom()) return
+    if (flag){
+        flag = false
+    }else {
+        return
+    }
+    // 对比上次和本次的数据长度, 若不相同则表示数据请求完毕
+    if (befResLen != aftResLen){
+        currentPage++
+        await axios.post("/pools/role/page",{page:currentPage,pageSize}).then((result)=>{
+            befResLen = aftResLen // 更新上次请求数据的长度
+            rolePoolArr.value = rolePoolArr.value.concat(result.data.data)
+            aftResLen = rolePoolArr.value.length // 更新本次的请求长度
+            flag = true
+        })
+        console.log("currentPage", currentPage)
+    }
+
+    /*let newElArr:HTMLElement[] = []
+    poolItem = (el : HTMLElement) =>{
+        // elemList.forEach(item =>{
+        //     if (el.dataset.key != item.dataset.key){
+        //         newElArr.push(el)
+        //     }
+        // })
+        console.log(el)
+    }
+    elemList.concat(newElArr)
+    console.log(newElArr)*/
+},1000)
 
 </script>
 

@@ -49,7 +49,7 @@ import {ref, reactive, onBeforeMount, Ref, onMounted} from 'vue';
 import axios from "axios";
 import {ObjectId} from "mongodb";
 import cardLoading from "@/utils/gsapAnima";
-import {hasPageBottom, throttle} from "@/utils/util";
+import {debounce, hasPageBottom, throttle} from "@/utils/util";
 import {gsap} from "gsap";
 
 // 角色卡池类型
@@ -85,7 +85,7 @@ let aftResLen = 0
 
 onMounted(()=>{
     init()
-    window.addEventListener("scroll",()=>{
+    window.addEventListener("scroll", ()=>{
         hitBottomLoad()
     })
 })
@@ -104,9 +104,9 @@ async function init(){
 }
 
 let flag = true
-const hitBottomLoad:Function = throttle( async () => {
+const hitBottomLoad:Function = debounce(() => {
 
-    if(hasPageBottom()) return
+    if(!hasPageBottom()) return
     if (flag){
         flag = false
     }else {
@@ -115,7 +115,7 @@ const hitBottomLoad:Function = throttle( async () => {
     // 对比上次和本次的数据长度, 若不相同则表示数据请求完毕
     if (befResLen != aftResLen){
         currentPage++
-        await axios.post("/pools/role/page",{page:currentPage,pageSize}).then((result)=>{
+        axios.post("/pools/role/page",{page:currentPage,pageSize}).then((result)=>{
             befResLen = aftResLen // 更新上次请求数据的长度
             rolePoolArr.value = rolePoolArr.value.concat(result.data.data)
             aftResLen = rolePoolArr.value.length // 更新本次的请求长度
@@ -123,19 +123,7 @@ const hitBottomLoad:Function = throttle( async () => {
         })
         console.log("currentPage", currentPage)
     }
-
-    /*let newElArr:HTMLElement[] = []
-    poolItem = (el : HTMLElement) =>{
-        // elemList.forEach(item =>{
-        //     if (el.dataset.key != item.dataset.key){
-        //         newElArr.push(el)
-        //     }
-        // })
-        console.log(el)
-    }
-    elemList.concat(newElArr)
-    console.log(newElArr)*/
-},1000)
+}, 200)
 
 </script>
 
@@ -165,7 +153,7 @@ const hitBottomLoad:Function = throttle( async () => {
         box-shadow:
         3px 3px 7px rgba(0, 0, 0, .1),
         -3px -3px 7px rgba(0, 0, 0, .4);
-        opacity: 0;
+        opacity: 1;
     }
     .left{
         position: relative;

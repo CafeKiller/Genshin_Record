@@ -90,8 +90,9 @@ export const hasPageBottom = ():boolean => {
     // 当前窗口高度
     let pageHeight:number = document.documentElement.clientHeight
     // 页面总高度
+
     let scrollHeight:number = document.documentElement.scrollHeight
-    if (scrollTop + pageHeight >= scrollHeight){
+    if (scrollTop + pageHeight+1 >= scrollHeight){
         return true
     }
     return false

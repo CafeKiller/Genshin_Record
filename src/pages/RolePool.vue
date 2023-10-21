@@ -1,7 +1,7 @@
 <template>
     <div class="cont">
-        <div  class="pool-box" v-for="item in rolePoolArr" :key="item.poolName + item._id">
-            <div  :ref="poolItem" class="pool-item" :data-key="item.poolName + item._id">
+        <div ref="poolItem" class="pool-box" v-for="item in rolePoolArr" :key="item.poolName + item._id">
+            <div   class="pool-item" :data-key="item.poolName + item._id">
                 <div class="left">
                     <img :src="'http://localhost:5173/static'+item.cover" :alt="item.poolName">
                     <span class="ver-text">Version {{item.version}}</span>
@@ -45,12 +45,11 @@
 
 <script setup lang="ts">
 import { get } from '../api/api';
-import {ref, reactive, onBeforeMount, Ref, onMounted} from 'vue';
+import {ref, reactive, onBeforeMount, Ref, onMounted, onUpdated} from 'vue';
 import axios from "axios";
 import {ObjectId} from "mongodb";
 import cardLoading from "@/utils/gsapAnima";
 import {debounce, hasPageBottom, throttle} from "@/utils/util";
-import {gsap} from "gsap";
 
 // 角色卡池类型
 type rolePool = {
@@ -66,9 +65,7 @@ type rolePool = {
 }
 
 let elemList:HTMLElement[] = [];
-let poolItem = (el : HTMLElement) =>{
-    elemList.push(el)
-}
+let poolItem = ref<any>([])
 let rolePoolArr:Ref<rolePool[]> = ref([])
 let currentPage = 1
 let pageSize = 2
@@ -89,6 +86,10 @@ onMounted(()=>{
         hitBottomLoad()
     })
 })
+onUpdated(()=>{
+    // 执行加载动画
+    cardLoading(poolItem.value.slice(-pageSize))
+})
 
 /**
  * @description 组件页面初始化函数
@@ -100,7 +101,7 @@ async function init(){
         befResLen = rolePoolArr.value.length
     })
     // 执行加载动画
-    cardLoading(elemList)
+    cardLoading(poolItem.value)
 }
 
 let flag = true
@@ -121,7 +122,6 @@ const hitBottomLoad:Function = debounce(() => {
             aftResLen = rolePoolArr.value.length // 更新本次的请求长度
             flag = true
         })
-        console.log("currentPage", currentPage)
     }
 }, 200)
 

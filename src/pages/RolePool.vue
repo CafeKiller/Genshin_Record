@@ -44,11 +44,11 @@
 </template>
 
 <script setup lang="ts">
-import { gsap } from "gsap";
 import { get } from '../api/api';
 import {ref, reactive, onBeforeMount, Ref, onMounted} from 'vue';
 import axios from "axios";
 import {ObjectId} from "mongodb";
+import cardLoading from "@/utils/gsapAnima";
 
 // 角色卡池类型
 type rolePool = {
@@ -64,8 +64,8 @@ type rolePool = {
 }
 
 let elemList:HTMLElement[] = [];
-const poolItem = (e : HTMLElement) =>{
-    elemList.push(e)
+const poolItem = (el : HTMLElement) =>{
+    elemList.push(el)
 }
 let rolePoolArr:Ref<rolePool[]> = ref([])
 
@@ -84,23 +84,18 @@ onMounted(()=>{
     init()
 })
 
-// 组件初始化函数
+/**
+ * @description 组件页面初始化函数
+ * */
 async function init(){
     // 请求数据
     await axios.get("/pools/role/all").then((result)=>{
         rolePoolArr.value = result.data.data
     })
     // 执行加载动画
-    loading(elemList)
+    cardLoading(elemList)
 }
 
-// 页面动画加载
-function loading(elements:HTMLElement[]) {
-    const loader = gsap.timeline();
-    const duration = 0.25;
-    const delay = .35;
-    loader.staggerTo(elements,duration,{x:100,opacity:1},delay)
-}
 </script>
 
 <style scoped>

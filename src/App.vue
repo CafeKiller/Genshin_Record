@@ -1,5 +1,6 @@
 <template>
-  <div class="wrap">
+  <div class="wrap" id="context">
+
     <Header></Header>
     <Nav></Nav>
     <router-view></router-view>
@@ -13,12 +14,13 @@
 
 <style>
 .wrap{
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1960px;
-  min-width: 1200px;
-  overflow: hidden;
-  background-color: #f0f1f5;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1960px;
+    min-width: 1200px;
+    overflow: hidden;
+    background-color: #f0f1f5;
+
 }
 .wrap *{
   color: #333;

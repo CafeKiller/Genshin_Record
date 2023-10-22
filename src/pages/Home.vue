@@ -1,28 +1,20 @@
 <template>
     <h1>这里是home组件</h1>
+    <div class="home-cont">
+        <v-md-preview :text="text"></v-md-preview>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { get, post } from '../api/api';
-import axios from "axios";
-
-/*axios.get('/upms/user/info')
-    .then((res)=>{
-        console.log(res.data)
-    })
-    .catch((err)=>{
-        console.error(err)
-    })*/
-
-
-// get("/role/get").then((data) => {
-//     console.log(data);
-// }).catch((err) => {
-//     console.log(err);
-// })
-
+let text =
+    `\n # Hello Markdown
+     \n ---
+    `
 </script>
 
 <style>
-
+.home-cont{
+    margin: 0 auto;
+    width: 1200px;
+}
 </style>

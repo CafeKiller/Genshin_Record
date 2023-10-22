@@ -64,21 +64,23 @@ type rolePool = {
     isRemake:number
 }
 
-let elemList:HTMLElement[] = [];
 let poolItem = ref<any>([])
 let rolePoolArr:Ref<rolePool[]> = ref([])
 let currentPage = 1
 let pageSize = 2
 let befResLen = 0
 let aftResLen = 0
+let flag = true
 
-//获取后台全部角色卡池数据
-// get("/api/role/pool/get").then((result: any) => {
-//     // console.log("result",result);
-//     rolePoolArr.value = result.data;
-// }).catch((err) => {
-//     console.log(err);
-// })
+// 获取后台全部角色卡池数据
+/*
+get("/api/role/pool/get").then((result: any) => {
+    // console.log("result",result);
+    rolePoolArr.value = result.data;
+}).catch((err) => {
+    console.log(err);
+})
+*/
 
 onMounted(()=>{
     init()
@@ -104,9 +106,7 @@ async function init(){
     cardLoading(poolItem.value)
 }
 
-let flag = true
 const hitBottomLoad:Function = debounce(() => {
-
     if(!hasPageBottom()) return
     if (flag){
         flag = false
@@ -134,12 +134,13 @@ const hitBottomLoad:Function = debounce(() => {
         width: 1200px;
     }
     .pool-box{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .pool-item{
         position: relative;
         left: -100px;
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0;
+    }
+    .pool-item{
         padding-left: 30px;
         margin-bottom: 30px;
         display: flex;
@@ -153,7 +154,6 @@ const hitBottomLoad:Function = debounce(() => {
         box-shadow:
         3px 3px 7px rgba(0, 0, 0, .1),
         -3px -3px 7px rgba(0, 0, 0, .4);
-        opacity: 1;
     }
     .left{
         position: relative;

@@ -10,7 +10,6 @@
 // let title: string = "知识是用于提升自我的,而不是用来彰显优越的";
 
 import {ref, onMounted, Ref} from "vue";
-import * as events from "events";
 import {throttle} from "@/utils/util";
 
 const headerNav = ref()
@@ -31,6 +30,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .header-wrap{
+  min-width: 1200px;
   width: 100%;
   height: 740px;
   text-align: center;

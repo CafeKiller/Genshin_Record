@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kangc/v-md-editor": "^2.3.17",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "gsap": "^3.12.2",

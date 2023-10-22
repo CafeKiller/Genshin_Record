@@ -1,9 +1,10 @@
 import Mock from "mockjs";
 
-import data from "./datas/user.json"
+import data from "./datas/home_record.json"
 
 import rolePoolData from "./datas/role_pools.json"
 import weaponPoolData from "./datas/weapon_pools.json"
+import homeRecordData from "./datas/home_record.json"
 import {rolePoolType} from "@/mock/tpying";
 
 type mockResult = {
@@ -20,6 +21,21 @@ enum requestMethod  {
     GET = 'get',
     POST= 'post'
 }
+
+// 主页记录mock配置
+const mockHomeRequestList=[
+    {
+        url: "docs/home/all",
+        type: requestMethod.GET,
+        response: ():mockResult => {
+            return {
+                code: 200,
+                message: "成功",
+                data: homeRecordData
+            }
+        }
+    }
+]
 
 // 角色池mock配置
 const mockRoleRequestList = [
@@ -53,6 +69,7 @@ const mockRoleRequestList = [
 ]
 
 export default [
+    ...mockHomeRequestList,
     ...mockRoleRequestList,
     // 武器池mock配置
     {

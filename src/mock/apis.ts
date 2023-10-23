@@ -5,6 +5,7 @@ import data from "./datas/home_record.json"
 import rolePoolData from "./datas/role_pools.json"
 import weaponPoolData from "./datas/weapon_pools.json"
 import homeRecordData from "./datas/home_record.json"
+import versionMdData from "./datas/version_md.json"
 import {rolePoolType} from "@/mock/tpying";
 
 type mockResult = {
@@ -68,10 +69,8 @@ const mockRoleRequestList = [
     },
 ]
 
-export default [
-    ...mockHomeRequestList,
-    ...mockRoleRequestList,
-    // 武器池mock配置
+// 武器池mock配置
+const mockWeaponRequestList = [
     {
         url: "/pools/weapon/all",
         type: requestMethod.GET,
@@ -83,6 +82,29 @@ export default [
             }
         }
     }
+]
+
+// 版本信息mock配置
+const mockVersionRequestList = [
+    {
+        url: "/docs/version/all",
+        type: requestMethod.GET,
+        response: (): mockResult =>{
+            return {
+                code:200,
+                message: "success",
+                data: versionMdData
+            }
+        }
+    }
+]
+
+export default [
+    ...mockHomeRequestList,
+    ...mockRoleRequestList,
+    ...mockWeaponRequestList,
+    ...mockVersionRequestList
+
     /*{
         url: "/auth/oauth/token",
         type: "post",

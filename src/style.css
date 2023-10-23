@@ -15,6 +15,9 @@ body {
   -ms-user-select: none;
   -khtml-user-select: none;
 }
+html,body{
+  background-color: #f1eae2;
+}
 :root {
   --color-white: #ffffff
 }

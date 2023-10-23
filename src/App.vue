@@ -15,14 +15,17 @@
 <style lang="scss">
 .wrap{
     margin: 0 auto;
-    width: 100%;
     max-width: 1960px;
     min-width: 1200px;
-    overflow: hidden;
+    height: 100vh;
     background-color: #f1eae2;
     *{
         color: #333;
         box-sizing: border-box;
+    }
+    &::-webkit-scrollbar{
+      width: 0;
+      height: 0;
     }
 }
 .dialog{

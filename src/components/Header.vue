@@ -22,7 +22,7 @@ onMounted(() => {
       if (top > 100){
           logoEl ? logoEl.className = "logo on" : undefined
       }else{
-          logoEl ? logoEl.className = "logo" : undefined
+          logoEl ? logoEl.className = "logo " : undefined
       }
   },200))
 })

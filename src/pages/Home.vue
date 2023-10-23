@@ -16,7 +16,7 @@ let text =ref(``)
 axios.get("docs/home/all")
     .then((res) => {
         console.log(res.data.data[0])
-        text.value = res.data.data[0].content
+        text.value = res?.data?.data[0]?.content
     })
 
 // method

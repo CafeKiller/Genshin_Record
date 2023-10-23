@@ -118,7 +118,7 @@ const hitBottomLoad:Function = debounce(() => {
         currentPage++
         axios.post("/pools/role/page",{page:currentPage,pageSize}).then((result)=>{
             befResLen = aftResLen // 更新上次请求数据的长度
-            rolePoolArr.value = rolePoolArr.value.concat(result.data.data)
+            rolePoolArr.value = rolePoolArr.value?.concat(result?.data?.data)
             aftResLen = rolePoolArr.value.length // 更新本次的请求长度
             flag = true
         })
